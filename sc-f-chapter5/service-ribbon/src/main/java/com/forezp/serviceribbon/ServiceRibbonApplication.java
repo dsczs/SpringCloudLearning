@@ -16,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 public class ServiceRibbonApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run( ServiceRibbonApplication.class, args );
+        SpringApplication.run(ServiceRibbonApplication.class, args);
     }
 
     @Bean

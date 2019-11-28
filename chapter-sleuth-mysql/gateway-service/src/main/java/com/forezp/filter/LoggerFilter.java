@@ -14,6 +14,7 @@ public class LoggerFilter extends ZuulFilter {
 
     @Autowired
     Tracer tracer;
+
     @Override
     public String filterType() {
         return FilterConstants.POST_TYPE;
@@ -32,7 +33,7 @@ public class LoggerFilter extends ZuulFilter {
     @Override
     public Object run() {
 
-        tracer.addTag("operator","forezp");
+        tracer.addTag("operator", "forezp");
         System.out.print(tracer.getCurrentSpan().traceIdString());
         return null;
     }

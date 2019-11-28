@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ConsulMiyaApplication {
 
-	@RequestMapping("/hi")
-	public String home() {
-		return "hi ,i'm miya";
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(ConsulMiyaApplication.class).web(true).run(args);
+    }
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(ConsulMiyaApplication.class).web(true).run(args);
-	}
+    @RequestMapping("/hi")
+    public String home() {
+        return "hi ,i'm miya";
+    }
 }

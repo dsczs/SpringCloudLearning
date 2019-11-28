@@ -25,6 +25,6 @@ public class ServiceTurbineApplication {
      */
 
     public static void main(String[] args) {
-        SpringApplication.run( ServiceTurbineApplication.class, args );
+        SpringApplication.run(ServiceTurbineApplication.class, args);
     }
 }

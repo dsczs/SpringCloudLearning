@@ -16,19 +16,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class ConfigClientApplication {
 
-	/**
-	 * http://localhost:8881/actuator/bus-refresh
-	 */
+    @Value("${foo}")
+    String foo;
 
-	public static void main(String[] args) {
-		SpringApplication.run(ConfigClientApplication.class, args);
-	}
+    /**
+     * http://localhost:8881/actuator/bus-refresh
+     */
 
-	@Value("${foo}")
-	String foo;
+    public static void main(String[] args) {
+        SpringApplication.run(ConfigClientApplication.class, args);
+    }
 
-	@RequestMapping(value = "/hi")
-	public String hi(){
-		return foo;
-	}
+    @RequestMapping(value = "/hi")
+    public String hi() {
+        return foo;
+    }
 }

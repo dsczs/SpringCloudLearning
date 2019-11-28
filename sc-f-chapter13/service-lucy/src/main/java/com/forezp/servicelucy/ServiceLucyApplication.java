@@ -22,11 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableCircuitBreaker
 public class ServiceLucyApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run( ServiceLucyApplication.class, args );
-    }
     @Value("${server.port}")
     String port;
+
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceLucyApplication.class, args);
+    }
 
     @RequestMapping("/hi")
     @HystrixCommand(fallbackMethod = "hiError")
@@ -35,6 +36,6 @@ public class ServiceLucyApplication {
     }
 
     public String hiError(String name) {
-        return "hi,"+name+",sorry,error!";
+        return "hi," + name + ",sorry,error!";
     }
 }

@@ -15,30 +15,28 @@ import java.util.logging.Logger;
 @RestController
 public class ServiceMiyaApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServiceMiyaApplication.class, args);
-	}
+    private static final Logger LOG = Logger.getLogger(ServiceMiyaApplication.class.getName());
+    @Autowired
+    private RestTemplate restTemplate;
 
-	private static final Logger LOG = Logger.getLogger(ServiceMiyaApplication.class.getName());
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceMiyaApplication.class, args);
+    }
 
+    @RequestMapping("/hi")
+    public String home() {
+        LOG.log(Level.INFO, "hi is being called");
+        return "hi i'm miya!";
+    }
 
-	@RequestMapping("/hi")
-	public String home(){
-		LOG.log(Level.INFO, "hi is being called");
-		return "hi i'm miya!";
-	}
+    @RequestMapping("/miya")
+    public String info() {
+        LOG.log(Level.INFO, "info is being called");
+        return restTemplate.getForObject("http://localhost:8988/info", String.class);
+    }
 
-	@RequestMapping("/miya")
-	public String info(){
-		LOG.log(Level.INFO, "info is being called");
-		return restTemplate.getForObject("http://localhost:8988/info",String.class);
-	}
-
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@Bean
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 }

@@ -18,19 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableHystrixDashboard
 public class ServiceLucyApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServiceLucyApplication.class, args);
-	}
+    @Value("${server.port}")
+    String port;
 
-	@Value("${server.port}")
-	String port;
-	@RequestMapping("/hi")
-	@HystrixCommand(fallbackMethod = "hiError")
-	public String home(@RequestParam String name) {
-		return "hi "+name+",i  am lucy and from port:" +port;
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServiceLucyApplication.class, args);
+    }
 
-	public String hiError(String name) {
-		return "hi,"+name+",sorry,error!";
-	}
+    @RequestMapping("/hi")
+    @HystrixCommand(fallbackMethod = "hiError")
+    public String home(@RequestParam String name) {
+        return "hi " + name + ",i  am lucy and from port:" + port;
+    }
+
+    public String hiError(String name) {
+        return "hi," + name + ",sorry,error!";
+    }
 }

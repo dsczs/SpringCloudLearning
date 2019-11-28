@@ -10,8 +10,8 @@ import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 public class ServiceTurbineApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-			new SpringApplicationBuilder(ServiceTurbineApplication.class).web(true).run(args);
-	}
+        new SpringApplicationBuilder(ServiceTurbineApplication.class).web(true).run(args);
+    }
 }
